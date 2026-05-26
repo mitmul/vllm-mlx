@@ -295,6 +295,18 @@ class TestIsMllmModelConfigPriority:
     def test_config_indicates_vlm_rejects_text_only_qwen3(self):
         assert _config_indicates_vlm({"architectures": ["Qwen3ForCausalLM"]}) is False
 
+    def test_config_indicates_vlm_rejects_text_only_plamo3_reserved_image_token(self):
+        assert (
+            _config_indicates_vlm(
+                {
+                    "model_type": "plamo3",
+                    "architectures": ["Plamo3ForCausalLM"],
+                    "image_token_id": 151655,
+                }
+            )
+            is False
+        )
+
     def test_config_indicates_vlm_handles_missing_architectures(self):
         assert _config_indicates_vlm({"model_type": "qwen3"}) is False
 

@@ -366,15 +366,15 @@ MLLM_PATTERNS = [
 
 
 # Config.json keys that, when present, indicate a multimodal model.
+#
+# Do not include generic media token IDs here. Some text-only checkpoints keep
+# reserved image/audio token IDs in config.json while still declaring a plain
+# ForCausalLM architecture; those should stay on the mlx-lm path.
 _VLM_CONFIG_KEYS = (
     "vision_config",
     "audio_config",
     "vision_tower",
     "mm_vision_tower",
-    "image_token_id",
-    "image_token_index",
-    "audio_token_id",
-    "audio_token_index",
 )
 
 # Substrings (case-insensitive) inside `architectures` entries that identify VLMs.

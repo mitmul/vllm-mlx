@@ -102,6 +102,10 @@ audio = [
     "jieba>=0.42.0",         # Chinese word segmentation
 ]
 
+[tool.uv.sources]
+# Keep the sibling mlx-lm checkout on support-nvfp4-gptq when syncing.
+mlx-lm = { path = "../mlx-lm", editable = true }
+
 [project.urls]
 Homepage = "https://github.com/vllm-mlx/vllm-mlx"
 Documentation = "https://github.com/vllm-mlx/vllm-mlx#readme"
